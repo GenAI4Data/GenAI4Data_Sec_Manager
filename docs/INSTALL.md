@@ -58,23 +58,23 @@ For running the application on Cloud Run, a dedicated Service Account with the r
     gcloud iam service-accounts create {service_account_name} --display-name="{display_name}"
     ```
 
-    ![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/CreateDataset.png)
+    ![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/CreateServiceAccount.png)
 
 2.  **Get Service Account Email:**
     ```bash
     gcloud iam service-accounts list --project={project_id} --filter="displayName:{service_account_name}" --format="value(email)"
     ```
 
-    ![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/CreateDataset.png)
+    ![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/ListServiceAccount.png)
 
-**Granting required roles:**
-```bash
-gcloud projects add-iam-policy-binding {project_id} --member="serviceAccount:{service_account_email}" --role="roles/bigquery.admin"
-gcloud projects add-iam-policy-binding {project_id} --member="serviceAccount:{service_account_email}" --role="roles/run.invoker"
-gcloud projects add-iam-policy-binding {project_id} --member="serviceAccount:{service_account_email}" --role="roles/iam.serviceAccountTokenCreator"
-```
+3.  **Granting the Requeried Roles:**
+    ```bash
+    gcloud projects add-iam-policy-binding {project_id} --member="serviceAccount:{service_account_email}" --role="roles/bigquery.admin"
+    gcloud projects add-iam-policy-binding {project_id} --member="serviceAccount:{service_account_email}" --role="roles/run.invoker"
+    gcloud projects add-iam-policy-binding {project_id} --member="serviceAccount:{service_account_email}" --role="roles/iam.serviceAccountTokenCreator"
+    ```
 
-![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/CreateDataset.png)
+    ![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/GratingSARoles.png)
 
 ### **3.4 BigQuery Dataset and Table Creation**
 

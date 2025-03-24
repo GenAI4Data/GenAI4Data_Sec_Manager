@@ -51,11 +51,21 @@ For running the application on Cloud Run, a dedicated Service Account with the r
 
 **Important:** Replace the `{value}` placeholders with your specific parameters.
 
-**Creating the service account:**
+**Service Account:**
 
-```bash
-gcloud iam service-accounts create {service_account_name} --project={project_id}
-```
+1.  **Create the Service Account:**
+    ```bash
+    gcloud iam service-accounts create {service_account_name} --display-name="{display_name}"
+    ```
+
+    ![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/CreateDataset.png)
+
+2.  **Get Service Account Email:**
+    ```bash
+    gcloud iam service-accounts list --project={project_id} --filter="displayName:{service_account_name}" --format="value(email)"
+    ```
+
+    ![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/CreateDataset.png)
 
 **Granting required roles:**
 ```bash
@@ -64,11 +74,13 @@ gcloud projects add-iam-policy-binding {project_id} --member="serviceAccount:{se
 gcloud projects add-iam-policy-binding {project_id} --member="serviceAccount:{service_account_email}" --role="roles/iam.serviceAccountTokenCreator"
 ```
 
+![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/CreateDataset.png)
+
 ### **3.4 BigQuery Dataset and Table Creation**
 
 1.  **Create the `rls_security` dataset:**
     
-    -   [Insert Image of Dataset Creation Here]
+    ![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/CreateDataset.png)
     - 
 2.  **Create the following tables within the `rls_security` dataset:**
     
@@ -124,13 +136,13 @@ cd $HOME
 git clone https://github.com/GenAI4Data/GenAI4Data_Sec_Manager.git
 ```
 
--   [Insert Image of GitHub Clone Here]
+![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/Gitclone.png)
 
 ### **3.6 Application Configuration**
 
 Open the `config.py` file in the Cloud Editor and insert your specific configuration values.
 
--   [Insert Image of config.py Editor Here]
+![image](https://raw.githubusercontent.com/GenAI4Data/GenAI4Data_Sec_Manager/refs/heads/main/docs/images/ConfigPy.png)
 
 ### **3.7 Application Deployment**
 
